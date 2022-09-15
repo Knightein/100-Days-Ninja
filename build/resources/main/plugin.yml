@@ -1,0 +1,9 @@
+name: NinjaMod
+version: '${project.version}'
+main: me.knightein.ninja100days.NinjaMod
+api-version: 1.18
+commands:
+  createninja:
+    description: Gives Ninja Gear
+    usage: /createninja [armourSlot]
+
