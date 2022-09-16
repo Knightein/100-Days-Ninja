@@ -213,7 +213,7 @@ public class CreateNinjaArmour implements CommandExecutor {
         ninjaHelmetMeta.lore(lore);
 
         // Modifiers
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armour", 10,
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armour", 20,
                 AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         ninjaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier);
 
