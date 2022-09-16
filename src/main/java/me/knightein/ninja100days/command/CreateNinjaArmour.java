@@ -167,8 +167,8 @@ public class CreateNinjaArmour implements CommandExecutor {
         ninjaLeggingsMeta.lore(lore);
 
         // Modifiers
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armour", 10,
-                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armour", 20,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         ninjaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
 
         // Enchants & Other
