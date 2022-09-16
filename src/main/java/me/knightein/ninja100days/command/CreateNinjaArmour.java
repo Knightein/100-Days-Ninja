@@ -13,7 +13,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +39,10 @@ public class CreateNinjaArmour implements CommandExecutor {
             if (args[0].equalsIgnoreCase("leggings")) {
                 return giveNinjaLeggings(sender);
             }
-            sender.sendMessage("Argument invalid, try 'Boots' or 'Chestplate'");
+            if (args[0].equalsIgnoreCase("head") || args[0].equalsIgnoreCase("helmet")) {
+                return giveNinjaHelmet(sender);
+            }
+            sender.sendMessage("Argument invalid, use: 'boots', 'chestplate', 'leggings' or 'head'");
         }
         return false;
     }
@@ -180,6 +182,50 @@ public class CreateNinjaArmour implements CommandExecutor {
 
         // Announcement
         player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Leggings");
+
+        return true;
+    }
+
+    private static boolean giveNinjaHelmet(@NotNull CommandSender sender) {
+        // Logic
+        Player player = (Player) sender;
+
+        // Creating Armour and Setting Colour
+        ItemStack ninjaHelmet = new ItemStack(Material.LEATHER_HELMET);
+        LeatherArmorMeta ninjaHelmetMeta = (LeatherArmorMeta) ninjaHelmet.getItemMeta();
+        ninjaHelmetMeta.setColor(Color.BLACK);
+
+        // Display Name
+        ninjaHelmetMeta.displayName(MiniMessage.miniMessage()
+                .deserialize("<bold><grey>Ninja Helmet"));
+
+        // Lore
+        List<Component> lore = List.of(
+                MiniMessage.miniMessage()
+                        .deserialize(""),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>The shadows allow you to see the dark."),
+                MiniMessage.miniMessage()
+                        .deserialize(""),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:#9013c2:#e420fa:#9013c2><bold>When equipped, you have Night Vision.")
+        );
+        ninjaHelmetMeta.lore(lore);
+
+        // Modifiers
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armour", 10,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        ninjaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, modifier);
+
+        // Enchants & Other
+        ninjaHelmetMeta.isUnbreakable();
+
+        // Setting Meta and Giving Item
+        ninjaHelmet.setItemMeta(ninjaHelmetMeta);
+        player.getInventory().addItem(ninjaHelmet);
+
+        // Announcement
+        player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Helmet");
 
         return true;
     }
