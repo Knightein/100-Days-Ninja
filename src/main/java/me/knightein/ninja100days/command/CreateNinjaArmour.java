@@ -37,6 +37,9 @@ public class CreateNinjaArmour implements CommandExecutor {
             if (args[0].equalsIgnoreCase("chestplate")) {
                 return giveNinjaChestplate(sender);
             }
+            if (args[0].equalsIgnoreCase("leggings")) {
+                return giveNinjaLeggings(sender);
+            }
             sender.sendMessage("Argument invalid, try 'Boots' or 'Chestplate'");
         }
         return false;
@@ -113,7 +116,7 @@ public class CreateNinjaArmour implements CommandExecutor {
                 MiniMessage.miniMessage()
                         .deserialize(""),
                 MiniMessage.miniMessage()
-                        .deserialize("<color:#ad130a><bold>When equipped, enemies become weak."),
+                        .deserialize("<color:#31c217><bold>When equipped, enemies become weak."),
                 MiniMessage.miniMessage()
                         .deserialize("<color:#ff1900><bold>                   +10 Hearts")
         );
@@ -133,6 +136,50 @@ public class CreateNinjaArmour implements CommandExecutor {
 
         // Announcement
         player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Chestplate");
+
+        return true;
+    }
+
+    private static boolean giveNinjaLeggings(@NotNull CommandSender sender) {
+        // Logic
+        Player player = (Player) sender;
+
+        // Creating Armour and Setting Colour
+        ItemStack ninjaLeggings = new ItemStack(Material.LEATHER_LEGGINGS);
+        LeatherArmorMeta ninjaLeggingsMeta = (LeatherArmorMeta) ninjaLeggings.getItemMeta();
+        ninjaLeggingsMeta.setColor(Color.BLACK);
+
+        // Display Name
+        ninjaLeggingsMeta.displayName(MiniMessage.miniMessage()
+                .deserialize("<bold><grey>Ninja Leggings"));
+
+        // Lore
+        List<Component> lore = List.of(
+                MiniMessage.miniMessage()
+                        .deserialize(""),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>The shadows cast the ability to climb."),
+                MiniMessage.miniMessage()
+                        .deserialize(""),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:#ad130a:red:#ad130a><bold>When equipped, you can climb walls.")
+        );
+        ninjaLeggingsMeta.lore(lore);
+
+        // Modifiers
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.armour", 10,
+                AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        ninjaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, modifier);
+
+        // Enchants & Other
+        ninjaLeggingsMeta.isUnbreakable();
+
+        // Setting Meta and Giving Item
+        ninjaLeggings.setItemMeta(ninjaLeggingsMeta);
+        player.getInventory().addItem(ninjaLeggings);
+
+        // Announcement
+        player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Leggings");
 
         return true;
     }
