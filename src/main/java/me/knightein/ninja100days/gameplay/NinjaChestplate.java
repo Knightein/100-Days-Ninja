@@ -34,6 +34,8 @@ public class NinjaChestplate implements Listener {
                     (new PotionEffect(PotionEffectType.SLOW, 120, 2));
             ((LivingEntity)event.getDamager()).addPotionEffect
                     (new PotionEffect(PotionEffectType.WEAKNESS, 120, 1));
+            ((LivingEntity) event.getDamager()).addPotionEffect
+                (new PotionEffect(PotionEffectType.GLOWING, 120, 1));
         }
     }
 }
