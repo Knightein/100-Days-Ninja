@@ -1,6 +1,6 @@
 package me.knightein.ninja100days;
 
-import me.knightein.ninja100days.command.CreateNinjaArmour;
+import me.knightein.ninja100days.command.CreateNinja;
 import me.knightein.ninja100days.gameplay.NinjaChestplate;
 import me.knightein.ninja100days.gameplay.NinjaHelmet;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -10,7 +10,7 @@ public final class NinjaMod extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getCommand("createninja").setExecutor(new CreateNinjaArmour());
+        getCommand("createninja").setExecutor(new CreateNinja());
         getServer().getPluginManager().registerEvents(new NinjaHelmet(), this);
         getServer().getPluginManager().registerEvents(new NinjaChestplate(), this);
     }
