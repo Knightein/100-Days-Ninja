@@ -13,13 +13,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.UUID;
 
-public class CreateNinjaArmour implements CommandExecutor {
+public class CreateNinja implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command,
                              @NotNull String label, @NotNull String[] args) {
@@ -42,7 +46,10 @@ public class CreateNinjaArmour implements CommandExecutor {
             if (args[0].equalsIgnoreCase("head") || args[0].equalsIgnoreCase("helmet")) {
                 return giveNinjaHelmet(sender);
             }
-            sender.sendMessage("Argument invalid, use: 'boots', 'chestplate', 'leggings' or 'head'");
+            if (args[0].equalsIgnoreCase("smokebomb")) {
+                return giveSmokeBomb(sender);
+            }
+            sender.sendMessage("Argument invalid, use: 'boots', 'chestplate', 'leggings', 'head' or 'smokebomb'");
         }
         return false;
     }
@@ -226,6 +233,32 @@ public class CreateNinjaArmour implements CommandExecutor {
 
         // Announcement
         player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Helmet");
+
+        return true;
+    }
+
+    private static boolean giveSmokeBomb(@NotNull CommandSender sender) {
+        // Logic
+        Player player = (Player) sender;
+
+        // Creating Armour and Setting Colour
+        ItemStack smokeBomb = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta smokeBombMeta = (PotionMeta) smokeBomb.getItemMeta();
+
+        // Display Name
+        smokeBombMeta.displayName(MiniMessage.miniMessage()
+                .deserialize("<bold><white>Smoke Bomb"));
+
+        // Enchants & Other
+        smokeBombMeta.setColor(Color.WHITE);
+        smokeBombMeta.addCustomEffect(new PotionEffect(PotionEffectType.INVISIBILITY, (60 * 20), 1), false);
+
+        // Setting Meta and Giving Item
+        smokeBomb.setItemMeta(smokeBombMeta);
+        player.getInventory().addItem(smokeBomb);
+
+        // Announcement
+        player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Smoke Bomb");
 
         return true;
     }
