@@ -15,7 +15,7 @@ public class NinjaHelmet implements Listener {
             String name = PlainTextComponentSerializer.plainText().serialize(event.getPlayer().getInventory().getHelmet().displayName());
             name = name.substring(1, name.length() - 1);
             if (event.getSlotType() == PlayerArmorChangeEvent.SlotType.HEAD) {
-                if (name.equals("Ninja Helmet")) {
+                if (name.equals("Ninja Mask")) {
                     player.addPotionEffect(PotionEffectType.NIGHT_VISION.createEffect(1000000, 2));
                 }
             }
