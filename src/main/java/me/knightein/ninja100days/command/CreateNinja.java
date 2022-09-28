@@ -44,7 +44,9 @@ public class CreateNinja implements CommandExecutor {
             if (args[0].equalsIgnoreCase("leggings")) {
                 return giveNinjaLeggings(sender);
             }
-            if (args[0].equalsIgnoreCase("head") || args[0].equalsIgnoreCase("helmet")) {
+            if (args[0].equalsIgnoreCase("head")
+                    || args[0].equalsIgnoreCase("helmet")
+                    || args[0].equalsIgnoreCase("mask")) {
                 return giveNinjaHelmet(sender);
             }
             if (args[0].equalsIgnoreCase("smokebomb")) {
