@@ -19,6 +19,8 @@ public class NinjaHelmet implements Listener {
                     player.addPotionEffect(PotionEffectType.NIGHT_VISION.createEffect(1000000, 2));
                 }
             }
+        } else {
+            player.removePotionEffect(PotionEffectType.NIGHT_VISION);
         }
     }
 }
