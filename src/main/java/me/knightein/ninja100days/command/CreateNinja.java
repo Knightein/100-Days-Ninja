@@ -205,7 +205,7 @@ public class CreateNinja implements CommandExecutor {
 
         // Display Name
         ninjaHelmetMeta.displayName(MiniMessage.miniMessage()
-                .deserialize("<bold><grey>Ninja Helmet"));
+                .deserialize("<bold><grey>Ninja Mask"));
 
         // Lore
         List<Component> lore = List.of(
@@ -233,7 +233,7 @@ public class CreateNinja implements CommandExecutor {
         player.getInventory().addItem(ninjaHelmet);
 
         // Announcement
-        player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Helmet");
+        player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Mask");
 
         return true;
     }
