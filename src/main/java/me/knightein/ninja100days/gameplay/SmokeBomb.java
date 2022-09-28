@@ -28,7 +28,7 @@ public class SmokeBomb implements Listener {
                         .offset(3, 3, 3) // Offset of the particle.
                         .location(event.getEntity().getLocation().clone().add(0, 1, 0)) // Location of the particle.
                         .spawn();
-            }, 0, 5L);
+            }, 0, 2L);
         }
     }
 }
