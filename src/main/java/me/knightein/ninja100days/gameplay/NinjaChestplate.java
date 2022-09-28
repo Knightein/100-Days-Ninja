@@ -24,18 +24,22 @@ public class NinjaChestplate implements Listener {
                     armourEquipped = false;
                 }
             }
+        } else {
+            armourEquipped = false;
         }
     }
 
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof LivingEntity && armourEquipped) {
-            ((LivingEntity)event.getDamager()).addPotionEffect
-                    (new PotionEffect(PotionEffectType.SLOW, 120, 2));
-            ((LivingEntity)event.getDamager()).addPotionEffect
-                    (new PotionEffect(PotionEffectType.WEAKNESS, 120, 1));
-            ((LivingEntity) event.getDamager()).addPotionEffect
-                (new PotionEffect(PotionEffectType.GLOWING, 120, 1));
+            if (!(event.getDamager() instanceof  Player)) {
+                ((LivingEntity)event.getDamager()).addPotionEffect
+                        (new PotionEffect(PotionEffectType.SLOW, 120, 2));
+                ((LivingEntity)event.getDamager()).addPotionEffect
+                        (new PotionEffect(PotionEffectType.WEAKNESS, 120, 1));
+                ((LivingEntity) event.getDamager()).addPotionEffect
+                        (new PotionEffect(PotionEffectType.GLOWING, 120, 1));
+            }
         }
     }
 }
