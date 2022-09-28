@@ -32,7 +32,7 @@ public class NinjaChestplate implements Listener {
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof LivingEntity && armourEquipped) {
-            if (!(event.getDamager() instanceof  Player)) {
+            if (!event.getDamager().getType().equals(EntityType.PLAYER)) {
                 ((LivingEntity)event.getDamager()).addPotionEffect
                         (new PotionEffect(PotionEffectType.SLOW, 120, 2));
                 ((LivingEntity)event.getDamager()).addPotionEffect
