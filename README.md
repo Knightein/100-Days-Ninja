@@ -42,7 +42,7 @@ Iron Shurikens. They are re-textured snowballs and require the resource packs
 found in [https://github.com/Knightein/100-Days-Ninja/blob/master/resourcepacks].
 #### Wooden Ninja Stars
 Wooden Ninja Stars can be made by using sticks in a crafting table in a +
-shape. They do TBA Hearts of Damage.
+shape. They do 1 Heart of Damage.
 #### Iron Shurikens
 Iron Shurikens can be made by using iron ingots in a crafting table in a +
-shape. They do TBA Hearts of Damage. 
+shape. They do 2.5 Hearts of Damage. 
