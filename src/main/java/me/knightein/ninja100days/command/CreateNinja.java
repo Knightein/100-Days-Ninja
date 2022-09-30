@@ -10,6 +10,7 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
@@ -51,6 +52,9 @@ public class CreateNinja implements CommandExecutor {
             }
             if (args[0].equalsIgnoreCase("smokebomb")) {
                 return giveSmokeBomb(sender);
+            }
+            if (args[0].equalsIgnoreCase("sword")) {
+                return giveNinjaSword(sender);
             }
             sender.sendMessage("Argument invalid, use: 'boots', 'chestplate', 'leggings', 'head' or 'smokebomb'");
         }
@@ -262,6 +266,57 @@ public class CreateNinja implements CommandExecutor {
 
         // Announcement
         player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Smoke Bomb");
+
+        return true;
+    }
+
+    private static boolean giveNinjaSword(@NotNull CommandSender sender) {
+        // Logic
+        Player player = (Player) sender;
+
+        // Creating Armour and Setting Colour
+        ItemStack ninjaSword = new ItemStack(Material.NETHERITE_SWORD);
+        ItemMeta ninjaSwordMeta = ninjaSword.getItemMeta();
+
+        // Display Name
+        ninjaSwordMeta.displayName(MiniMessage.miniMessage()
+                .deserialize("<bold><#ffc800>Grandmaster Sword"));
+
+        // Lore
+        List<Component> lore = List.of(
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>A legendary relic feared by all ninjas."),
+                MiniMessage.miniMessage()
+                        .deserialize(""),
+                MiniMessage.miniMessage()
+                        .deserialize("<#e0ce00><bold>  =+= <#ff8800>Grandmaster Enchantments <#e0ce00>=+="),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:#ff0004:#b30003><bold>                    Lifesteal X"),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>      Steal the life of your enemies!"),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:#ff219b:#b80955><bold>                   BloodRush X"),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:dark_grey:white:dark_grey><bold> The shadows cannot match your speed!"),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:#b036e0:#3f4ce0><bold>                  Comet Dash X"),
+                MiniMessage.miniMessage()
+                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>      Blinking once is a fatal error!")
+
+        );
+        ninjaSwordMeta.lore(lore);
+
+        // Enchants & Other
+        ninjaSwordMeta.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
+        ninjaSwordMeta.addEnchant(Enchantment.DURABILITY, 10, true);
+        ninjaSwordMeta.addEnchant(Enchantment.SWEEPING_EDGE, 5, true);
+
+        // Setting Meta and Giving Item
+        ninjaSword.setItemMeta(ninjaSwordMeta);
+        player.getInventory().addItem(ninjaSword);
+
+        // Announcement
+        player.sendMessage(ChatColor.DARK_GREEN + "Gave " + player.getPlayer().getName() + " Ninja Sword");
 
         return true;
     }
