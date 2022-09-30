@@ -12,7 +12,7 @@ public class NinjaStars {
         ItemStack ninjaStar = new ItemStack(Material.SNOWBALL, 8);
         ItemMeta ninjaStarMeta = ninjaStar.getItemMeta();
 
-        ninjaStarMeta.displayName(MiniMessage.miniMessage().deserialize(" <white>Wooden Ninja Star"));
+        ninjaStarMeta.displayName(MiniMessage.miniMessage().deserialize("<white>Wooden Ninja Star"));
         ninjaStar.setItemMeta(ninjaStarMeta);
 
         // Recipe
