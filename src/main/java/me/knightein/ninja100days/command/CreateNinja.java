@@ -178,7 +178,7 @@ public class CreateNinja implements CommandExecutor {
                 MiniMessage.miniMessage()
                         .deserialize(""),
                 MiniMessage.miniMessage()
-                        .deserialize("<gradient:#ad130a:red:#ad130a><bold>When equipped, you can climb walls.")
+                        .deserialize("<gradient:#ad130a:red:#ad130a><bold>When equipped, sneak to go invisible.")
         );
         ninjaLeggingsMeta.lore(lore);
 
