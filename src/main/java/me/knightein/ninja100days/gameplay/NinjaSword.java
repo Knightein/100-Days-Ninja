@@ -21,12 +21,4 @@ public class NinjaSword implements Listener {
             }
         }
     }
-
-    public void bloodRush() {
-
-    }
-
-    public void cometDash() {
-
-    }
 }
