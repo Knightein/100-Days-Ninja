@@ -291,18 +291,9 @@ public class CreateNinja implements CommandExecutor {
                 MiniMessage.miniMessage()
                         .deserialize("<#e0ce00><bold>  =+= <#ff8800>Grandmaster Enchantments <#e0ce00>=+="),
                 MiniMessage.miniMessage()
-                        .deserialize("<gradient:#ff0004:#b30003><bold>                    Lifesteal X"),
+                        .deserialize("<gradient:#ff0004:#b30003><bold>              > Lifesteal X <"),
                 MiniMessage.miniMessage()
-                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>      Steal the life of your enemies!"),
-                MiniMessage.miniMessage()
-                        .deserialize("<gradient:#ff219b:#b80955><bold>                   BloodRush X"),
-                MiniMessage.miniMessage()
-                        .deserialize("<gradient:dark_grey:white:dark_grey><bold> The shadows cannot match your speed!"),
-                MiniMessage.miniMessage()
-                        .deserialize("<gradient:#b036e0:#3f4ce0><bold>                  Comet Dash X"),
-                MiniMessage.miniMessage()
-                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>      Blinking once is a fatal error!")
-
+                        .deserialize("<gradient:dark_grey:white:dark_grey><bold>      Steal the life of your enemies!")
         );
         ninjaSwordMeta.lore(lore);
 
