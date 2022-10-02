@@ -275,7 +275,7 @@ public class CreateNinja implements CommandExecutor {
         Player player = (Player) sender;
 
         // Creating Armour and Setting Colour
-        ItemStack ninjaSword = new ItemStack(Material.NETHERITE_SWORD);
+        ItemStack ninjaSword = new ItemStack(Material.IRON_SWORD);
         ItemMeta ninjaSwordMeta = ninjaSword.getItemMeta();
 
         // Display Name
