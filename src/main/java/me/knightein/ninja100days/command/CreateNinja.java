@@ -280,7 +280,7 @@ public class CreateNinja implements CommandExecutor {
 
         // Display Name
         ninjaSwordMeta.displayName(MiniMessage.miniMessage()
-                .deserialize("<bold><#ffc800>Grandmaster Sword"));
+                .deserialize("<bold><#ffc800>Lifesteal Katana"));
 
         // Lore
         List<Component> lore = List.of(
