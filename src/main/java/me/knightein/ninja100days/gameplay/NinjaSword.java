@@ -15,7 +15,7 @@ public class NinjaSword implements Listener {
             Player player = (Player) event.getDamager();
             String name = PlainTextComponentSerializer.plainText().serialize(player.getInventory().getItemInMainHand().displayName());
             name = name.substring(1, name.length() - 1);
-            if (name.equals("Grandmaster Sword") || name.equals("Ninja Sword")) {
+            if (name.equals("Grandmaster Sword") || name.equals("Lifesteal Katana")) {
                 double healingDamage = (event.getDamage() / 4);
                 player.setHealth(player.getHealth() + healingDamage);
             }

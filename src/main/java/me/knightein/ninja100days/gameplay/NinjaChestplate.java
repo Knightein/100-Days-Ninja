@@ -33,12 +33,14 @@ public class NinjaChestplate implements Listener {
     public void onHit(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof LivingEntity && armourEquipped) {
             if (!event.getDamager().getType().equals(EntityType.PLAYER)) {
-                ((LivingEntity)event.getDamager()).addPotionEffect
-                        (new PotionEffect(PotionEffectType.SLOW, 120, 2));
-                ((LivingEntity)event.getDamager()).addPotionEffect
-                        (new PotionEffect(PotionEffectType.WEAKNESS, 120, 1));
-                ((LivingEntity) event.getDamager()).addPotionEffect
-                        (new PotionEffect(PotionEffectType.GLOWING, 120, 1));
+                if (!event.getDamager().getType().equals(EntityType.ZOMBIE)) {
+                    ((LivingEntity)event.getDamager()).addPotionEffect
+                            (new PotionEffect(PotionEffectType.SLOW, 120, 2));
+                    ((LivingEntity)event.getDamager()).addPotionEffect
+                            (new PotionEffect(PotionEffectType.WEAKNESS, 120, 1));
+                    ((LivingEntity) event.getDamager()).addPotionEffect
+                            (new PotionEffect(PotionEffectType.GLOWING, 120, 1));
+                }
             }
         }
     }
